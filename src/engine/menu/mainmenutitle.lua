@@ -14,7 +14,11 @@ local MainMenuTitle, super = Class(StateClass)
 function MainMenuTitle:init(menu)
     self.menu = menu
 
-    self.continue_text = Text("Press [bind:confirm] to continue", 0, 360, SCREEN_WIDTH, nil, {
+    local str_a, str_b = "Press [bind:confirm]", "to continue"
+    self.continue_str = str_a .. " " .. str_b
+    -- Same workaround as MainMenuWarning
+    self.continue_str_gamepad = str_a .. str_b
+    self.continue_text = Text("ass", 0, 360, SCREEN_WIDTH, nil, {
         font = "small",
         align = "center"
     })
@@ -55,7 +59,7 @@ function MainMenuTitle:onEnter(old_state)
     self.menu.kristal_stage_title = TitleLogo(320, 180, self.menu.splash)
     MainMenu.stage:addChild(self.menu.kristal_stage_title)
 
-    self.continue_text:setText(self.continue_text.text)
+    self.continue_text:setText(Input.usingGamepad() and self.continue_str_gamepad or self.continue_str)
     self.continue_text.alpha = 1
     self.continue_text:setParent(MainMenu.stage)
 
