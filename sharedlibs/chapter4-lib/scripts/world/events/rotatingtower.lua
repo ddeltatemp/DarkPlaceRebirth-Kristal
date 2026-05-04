@@ -237,7 +237,7 @@ function RotatingTower:drawGridTile(layer, xid, id, x, y, col, pos, tileset, gw,
     if tileset.fill_grid and gw and gh and (w ~= gw or h ~= gh) then
         sx = gw / w
         sy = gh / h
-        if self.preserve_aspect_fit then
+        if tileset.preserve_aspect_fit then
             sx = MathUtils.absMin(sx, sy)
             sy = sx
         end
