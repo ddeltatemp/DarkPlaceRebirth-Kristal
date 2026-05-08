@@ -1,5 +1,5 @@
-MagicalGlassLib = {}
-local Lib = MagicalGlassLib
+local Lib = {}
+Registry.registerGlobal("MagicalGlassLib", Lib)
 
 function Lib:cleanup()
     MG_PALETTE               = nil
